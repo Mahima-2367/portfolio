@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Mail, Phone, Linkedin, MapPin, Send, CheckCircle } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -11,14 +12,21 @@ const ContactSection = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 3000);
+    // Email format validation (optional)
+    // ... your validation code ...
+
+    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target as HTMLFormElement, 'YOUR_USER_ID')
+      .then((result) => {
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({ name: '', email: '', subject: '', message: '' });
+        }, 3000);
+      }, (error) => {
+        alert('Failed to send message. Please try again later.');
+      });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -47,7 +55,7 @@ const ContactSection = () => {
       icon: Linkedin,
       title: "LinkedIn",
       value: "Connect with me",
-      href: "#",
+      href: "https://www.linkedin.com/in/maheswari-saminathan-3744a6354/",
       color: "purple"
     },
     {
@@ -96,6 +104,28 @@ const ContactSection = () => {
                 const Icon = info.icon;
                 const colorClasses = getColorClasses(info.color);
                 
+                if (info.title === 'LinkedIn') {
+                  return (
+                    <button
+                      key={info.title}
+                      type="button"
+                      onClick={() => window.open(info.href.trim(), '_blank', 'noopener,noreferrer')}
+                      className="group bg-card rounded-lg border p-6 hover:shadow-lg transition-all duration-300 hover:scale-105 w-full text-left"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className={`p-3 rounded-full ${colorClasses}`}>
+                          <Icon className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold">{info.title}</h4>
+                          <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                            {info.value}
+                          </p>
+                        </div>
+                      </div>
+                    </button>
+                  );
+                }
                 return (
                   <a
                     key={info.title}

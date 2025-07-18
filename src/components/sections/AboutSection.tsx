@@ -59,7 +59,7 @@ const AboutSection = () => {
                   <GraduationCap className="h-6 w-6 text-blue-600" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-lg font-semibold">M.SC (Microbiology)</h4>
+                  <h4 className="text-lg font-semibold">M.SC (MicroBiology)</h4>
                   <p className="text-muted-foreground">Bharathidasan University</p>
                   <p className="text-sm text-muted-foreground">
                     Dhanalakshmi Srinivasan Arts & Science College for Women, Perambalur

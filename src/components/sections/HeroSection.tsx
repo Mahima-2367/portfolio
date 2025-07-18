@@ -18,7 +18,7 @@ const HeroSection = () => {
           <div className="flex-1 text-center lg:text-left animate-slide-in-left">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Hi, I'm{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-black dark:text-white">
                 Maheswari
               </span>
             </h1>
@@ -47,10 +47,10 @@ const HeroSection = () => {
                 <span>7825991995</span>
               </a>
               <a 
-                href="#" 
+                href="https://www.linkedin.com/in/maheswari-saminathan-3744a6354/" 
                 className="flex items-center gap-2 text-muted-foreground hover:text-blue-600 transition-colors duration-300"
               >
-                <Linkedin className="h-5 w-5" />
+                
                 <span>LinkedIn</span>
               </a>
             </div>
@@ -71,7 +71,7 @@ const HeroSection = () => {
           <div className="flex-1 flex justify-center lg:justify-end animate-fade-in">
             <div className="w-80 h-80 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-full flex items-center justify-center animate-float">
               <div className="w-72 h-72 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white text-6xl font-bold">
-                M
+                <span style={{ color: '#000' }}>M</span>
               </div>
             </div>
           </div>
